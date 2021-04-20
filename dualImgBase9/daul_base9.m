@@ -1,10 +1,12 @@
-function [ output_array] = daul_base9( cover_img_path, maxbpp )
+function [ backPsnr] = daul_base9( cover_img_path, maxbpp )
 %UNTITLED Summary of this function goes here
 %   Detailed explanation goes here
 % cover_img_path = '..\images\lena.tif';
+% cover_img_path = [ 'images\'  cover_img_path '512x512.tif']; % ann用
 cover=imread(cover_img_path); %原始影像
 %Gray=rgb2gray(cover); %轉灰階
 % img = (cover);
+backPsnr = zeros(20,2); 
 [height, width] = size(cover);
 for i = 1 : height
     for j = 1 : width
@@ -12,7 +14,8 @@ for i = 1 : height
     end
 end
 
-output_array = [];
+PSNR_array = [];
+bpp_array = [];
 for x = 1 : 20
     bpp = maxbpp/20 * x;
 
@@ -126,8 +129,9 @@ for x = 1 : 20
     % extracting - b9
     data_diff_b9 = 0;
     temp_b10 = 0;
-    binStr = "";
+    binStr = '';
     extract_data_array_b2 = [];
+    binStr_len = 0;
     for i = 1 : min(length(secret_array_b9), length(extract_data_array))
         data_diff_b9 = data_diff_b9 + abs(secret_array_b9(i) - extract_data_array(i));
         % b9 to b2 string
@@ -135,7 +139,8 @@ for x = 1 : 20
             temp_b10 = temp_b10 + extract_data_array(i) * 9;
         else
             temp_b10 = temp_b10 + extract_data_array(i);
-            binStr = binStr + string(dec2bin(temp_b10,6));
+%             binStr = binStr + string(dec2bin(temp_b10,6));
+            binStr_len =  binStr_len + length(dec2bin(temp_b10,6));
             temp_b10 = 0;
         end
     end
@@ -155,17 +160,31 @@ for x = 1 : 20
     %----------(PSNR)-------------
     stego_img1_PSNR = PSNR(stego_img1_MSE);
     stego_img2_PSNR = PSNR(stego_img2_MSE);
+    
+%     stego_img1_PSNR = clacImage(img, stego_img1);
+%     stego_img2_PSNR = clacImage(img, stego_img2); 
+    
     avgPSNR = (stego_img1_PSNR+stego_img2_PSNR) / 2;
+    
     %----------(bpp)-------------
-    if length(secret_array_b9) > length(extract_data_array)
-        bpp = strlength(binStr) / (height*width*2);
-    else
-        bpp = strlength(binStr) / (height*width*2);
-%         bpp = length(secret_array_b2) / (height*width*2);
-    end
-    output_array = [output_array, [avgPSNR, bpp]];
+%     if length(secret_array_b9) > length(extract_data_array)
+% %         bpp = strlength(binStr) / (height*width*2);
+%         bpp = length(binStr) / (height*width*2);
+%     else
+% %         bpp = strlength(binStr) / (height*width*2);
+%         bpp = binStr_len / (height*width*2);
+% %         bpp = length(secret_array_b2) / (height*width*2);
+%     end
+    bpp = binStr_len / (height*width*2);
+    PSNR_array = [PSNR_array, avgPSNR];
+    bpp_array = [bpp_array, bpp];
     disp(x)
 end
 
+for i = 1:length(PSNR_array) 
+    backPsnr (i,2) = PSNR_array (i); 
+    backPsnr (i,1) = bpp_array (i); 
 end
+backPsnr
+ end
 
