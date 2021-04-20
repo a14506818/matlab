@@ -39,12 +39,8 @@ for x = 1 : 20
         for j = 1 : length(temp_bitset_b2)
             temp_bitset_b10 = temp_bitset_b10 + temp_bitset_b2(1,j)*2^(length(temp_bitset_b2) - j);
         end
-        for j = 4 : -1 : 1
-            temp_bitset_b10_left = mod(temp_bitset_b10,9^j);
-            secret_array_b9 = [secret_array_b9 , floor(temp_bitset_b10_left / 9^(j-1))];
-        end
-%         temp_bitset_b9 = [floor(temp_bitset_b10 / 9^3), mod(temp_bitset_b10,9^3)];
-%         secret_array_b9 = [secret_array_b9 , temp_bitset_b9];
+        temp_bitset_b9 = [floor(temp_bitset_b10 / 9^3), mod(temp_bitset_b10,9^3)];
+        secret_array_b9 = [secret_array_b9 , temp_bitset_b9];
         secret_array_b2 = [secret_array_b2, temp_bitset_b2];
         temp_bitset_b9 = [];
         temp_bitset_b2 = [];
@@ -93,7 +89,7 @@ for x = 1 : 20
             temp_b10 = temp_b10 + extract_data_array(i) * 9;
         elseif mod(i,4) == 0
             temp_b10 = temp_b10 + extract_data_array(i);
-            binStr_len =  binStr_len + length(dec2bin(temp_b10,12));
+            binStr_len =  binStr_len + length(dec2bin(temp_b10));
             temp_b10 = 0;
         end
     end
