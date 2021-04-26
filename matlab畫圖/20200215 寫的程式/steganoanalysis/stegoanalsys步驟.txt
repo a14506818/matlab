@@ -1,0 +1,44 @@
+1. 畫直方圖 computeHistogram.m
+
+在程式中利用下面的程式呼叫 computeHistogram.m 畫出cover 和stego 的直方圖曲線
+
+if (isDrawFigure == 1)
+     for i=1:2
+            switch (CompairWithMySelf)
+                case {6}
+                    foutname =   file_name(8:size(file_name,2)-4); 
+                    titleWord = [foutname ' Stego1(K=' int2str(T_number) ',B=' int2str(Block_array_size) ')']; 
+                    computeHistogram (Gray, Stego3 ,  titleWord, i); 
+                     titleWord = [foutname ' Stego2(K=' int2str(T_number) ',B=' int2str(Block_array_size) ')']; 
+                    computeHistogram (Gray, Stego4 ,  titleWord, i); 
+            end 
+     end 
+
+end 
+
+2.產生 RS 曲線，利用 RSAttack.m 的程式產生 RS的數據
+在程式中放入  [R_FM_G, S_FM_G, U_FM_G, R_M_G, S_M_G, U_M_G] = RSAttack(fileword3);
+取得RSU的數據，再利用 RS analysis_畫曲線.xlsx 將數據小數點化，
+即利用最大的Count 數 除每一個數據，再帶到 " RS analysis_畫曲線.xlsx" 中畫曲線
+
+
+ if (isRSAttack == 1)
+                                       foutname = file_name(8:size(file_name,2)-4); 
+                                        fileword3 = [  'experimental results\stego_' foutname '_1_' int2str(T_number) '_' int2str(Block_array_size) '.jpg'] ;
+                                        imwrite(Stego3, fileword3, 'jpg');
+                                        fileword4 = [   'experimental results\stego_' foutname '_2_' int2str(T_number) '_' int2str(Block_array_size) '.jpg'] ;
+                                        imwrite(Stego4,fileword4,'jpg');
+%                                         
+                                         [R_FM_G, S_FM_G, U_FM_G, R_M_G, S_M_G, U_M_G] = RSAttack(fileword3);
+                                        fprintf(fid_att,'\n%s \t %5.0f \t%s \t %8.2f \t %8.2f \t %8.2f \t %8.2f \t %8.2f \t %8.2f \t %8.2f \t %8.2f\t', 'stego1',T_number, file_name, Block_array_size,R_FM_G, S_FM_G, U_FM_G, R_M_G, S_M_G, U_M_G, count); 
+
+                                         [R_FM_G, S_FM_G, U_FM_G, R_M_G, S_M_G, U_M_G] = RSAttack(fileword4);
+                                        fprintf(fid_att,'\n%s \t %5.0f \t%s \t %8.2f \t %8.2f \t %8.2f \t %8.2f \t %8.2f \t %8.2f \t %8.2f \t %8.2f\t', 'stego2',T_number, file_name, Block_array_size,R_FM_G, S_FM_G, U_FM_G, R_M_G, S_M_G, U_M_G, count); 
+                                end             
+
+3. 產生分析表格，利用 StegExpose-master 目錄匣下面的 
+
+java -jar StegExpose.jar testFolder standard default analysisFile.txt
+
+將偽裝影像放在 stego 資料匣中
+會產生一個 analysisFile.txt 的分析檔案

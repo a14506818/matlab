@@ -1,0 +1,12 @@
+
+method 	 first_hidding_bit 	 file_name 	 Stego 1 	 Stego 2 	 average1 	  Capacity 	 bpp 	 Proposed_T_number 	 time 	 MSE1 	 MSE2 	 total_Secret  	 fail 	 Block_array_size
+images\cyutLogo.tif 	  p-nonorder 	  Airplane 	    51.13 	    51.17 	    51.15 	  524288.00 	    1.00 	 6.738547e-01 	    0.50 	    0.50 	524288.00 	 
+images\cyutLogo.tif 	  p-order 	  Airplane 	    57.45 	    57.35 	    57.40 	  524288.00 	    1.00 	 6.738547e-01 	    0.12 	    0.12 	524288.00 	 
+images\cyutLogo.tif 	  p-nonorder 	  Tiffany 	    51.15 	    51.19 	    51.17 	  521066.00 	    0.99 	 7.666806e-01 	    0.50 	    0.49 	521066.00 	 
+images\cyutLogo.tif 	  p-order 	  Tiffany 	    57.52 	    57.03 	    57.27 	  521066.00 	    0.99 	 7.666806e-01 	    0.12 	    0.13 	521066.00 	 
+images\cyutLogo.tif 	  p-nonorder 	  Lake 	    51.14 	    51.15 	    51.14 	  524288.00 	    1.00 	 6.946615e-01 	    0.50 	    0.50 	524288.00 	 
+images\cyutLogo.tif 	  p-order 	  Lake 	    57.45 	    57.35 	    57.40 	  524288.00 	    1.00 	 6.946615e-01 	    0.12 	    0.12 	524288.00 	 
+images\cyutLogo.tif 	  p-nonorder 	  Mandrill 	    51.15 	    51.14 	    51.14 	  524210.00 	    1.00 	 6.998261e-01 	    0.50 	    0.50 	524210.00 	 
+images\cyutLogo.tif 	  p-order 	  Mandrill 	    57.35 	    56.97 	    57.16 	  524210.00 	    1.00 	 6.998261e-01 	    0.12 	    0.13 	524210.00 	 
+images\cyutLogo.tif 	  p-nonorder 	  Pepper 	    51.15 	    51.14 	    51.14 	  524240.00 	    1.00 	 7.330930e-01 	    0.50 	    0.50 	524240.00 	 
+images\cyutLogo.tif 	  p-order 	  Pepper 	    57.45 	    56.97 	    57.21 	  524240.00 	    1.00 	 7.330930e-01 	    0.12 	    0.13 	524240.00 	 

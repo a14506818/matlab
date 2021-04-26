@@ -1,0 +1,11 @@
+
+method 	 first_hidding_bit 	 file_name 	 Stego 1 	 Stego 2 	 average1 	  Capacity 	 bpp 	 Proposed_T_number 	 time 	 MSE1 	 MSE2 	 total_Secret  	 fail 	 Block_array_size
+Lu2016 	     3 	images\Lena512x512.tif 	    48.67 	    46.76 	    47.71 	  786432.00 	    1.50 	 3 	    0.15 	    0.88 	    1.37	 1279984.00
+CenterFolding 	     3 	images\Lena512x512.tif 	    47.60 	    45.67 	    46.63 	  786432.00 	    1.50 	 3 	    0.15 	    1.13 	    1.76	
+NonFolding 	     3 	images\Lena512x512.tif 	    42.44 	    40.39 	    41.42 	  786432.00 	    1.50 	 3 	    0.15 	    3.71 	    5.94	
+Lee2009 	     4 	images\Lena512x512.tif 	    51.14 	    54.08 	    52.61 	  395386.00 	    0.75 	 4 	    0.03 	     0.50 	      0.25	
+Lee2013 	     4 	images\Lena512x512.tif 	    51.09 	    50.04 	    50.57 	  524288.00 	    1.00 	 4 	    0.03 	     0.51 	      0.64	
+Chang2013 	     4 	images\Lena512x512.tif 	    39.89 	    39.89 	    39.89 	  786432.00 	    1.50 	 8 	    0.08 	     6.66 	      6.66	
+random 	  LSB-M 	  Lena 	    49.22 	    49.21 	    49.21 	  524288.00 	    1.00 	 2.659259e+00 	    0.78 	    0.78 	524288.00 	 
+images\random.tif 	  p-nonorder 	  Lena 	    51.15 	    51.14 	    51.14 	  524288.00 	    1.00 	 4.679876e-01 	    0.50 	    0.50 	524288.00 	 
+images\random.tif 	  p-order 	  Lena 	    51.65 	    51.24 	    51.45 	  524288.00 	    1.00 	 4.679876e-01 	    0.45 	    0.49 	524288.00 	 

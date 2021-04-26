@@ -28,18 +28,18 @@ for x = 1 : 20
     % max_bit_amount = 10;
     while length(secret_array_b2) < max_bit_amount
         temp_bitset_b10 = 0;
-        for j = 1 : 13
+        for j = 1 : 4
             temp_bitset_b2(end+1) = randi(2) - 1;
-            temp_bitset_b10 = temp_bitset_b10 + temp_bitset_b2(end)*2^(13-j);
+            temp_bitset_b10 = temp_bitset_b10 + temp_bitset_b2(end)*2^(4-j);
         end
-        if temp_bitset_b10 > 6560
+        if temp_bitset_b10 > 8
             temp_bitset_b2(end) = [];
         end
         temp_bitset_b10 = 0;
         for j = 1 : length(temp_bitset_b2)
             temp_bitset_b10 = temp_bitset_b10 + temp_bitset_b2(1,j)*2^(length(temp_bitset_b2) - j);
         end
-        for j = 4 : -1 : 1
+        for j = 1 : -1 : 1
             temp_bitset_b10_left = mod(temp_bitset_b10,9^j);
             secret_array_b9 = [secret_array_b9 , floor(temp_bitset_b10_left / 9^(j-1))];
         end
@@ -85,17 +85,21 @@ for x = 1 : 20
     for i = 1 : min(length(secret_array_b9), length(extract_data_array))
         data_diff_b9 = data_diff_b9 + abs(secret_array_b9(i) - extract_data_array(i));
         % b9 to b2 string
-        if mod(i,4) == 1
-            temp_b10 = temp_b10 + extract_data_array(i) * 9^3;
-        elseif mod(i,4) == 2
-            temp_b10 = temp_b10 + extract_data_array(i) * 9^2;
-        elseif mod(i,4) == 3
-            temp_b10 = temp_b10 + extract_data_array(i) * 9;
-        elseif mod(i,4) == 0
-            temp_b10 = temp_b10 + extract_data_array(i);
-            binStr_len =  binStr_len + length(dec2bin(temp_b10,12));
-            temp_b10 = 0;
-        end
+        temp_b10 = extract_data_array(i);
+        binStr_len =  binStr_len + length(dec2bin(temp_b10,3));
+%             binStr_len =  binStr_len + length(dec2bin(temp_b10,12));
+%             temp_b10 = 0;
+%         if mod(i,4) == 1
+%             temp_b10 = temp_b10 + extract_data_array(i) * 9^3;
+%         elseif mod(i,4) == 2
+%             temp_b10 = temp_b10 + extract_data_array(i) * 9^2;
+%         elseif mod(i,4) == 3
+%             temp_b10 = temp_b10 + extract_data_array(i) * 9;
+%         elseif mod(i,4) == 0
+%             temp_b10 = temp_b10 + extract_data_array(i);
+%             binStr_len =  binStr_len + length(dec2bin(temp_b10,12));
+%             temp_b10 = 0;
+%         end
     end
     data_diff_b9
 

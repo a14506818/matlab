@@ -1,0 +1,1 @@
+java -jar StegExpose.jar testFolder standard default analysisFile.txt
